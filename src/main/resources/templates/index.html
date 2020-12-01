@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lux</title>
+    <style>
+        body{
+            background-color: lightblue;
+        }
+        .box{
+            background-color: #bcc9e3;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5%;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>Lux</h1>
+    </div>
+    <form th:action="@{/post}" th:object="${post}" method="post">
+        <textarea th:field="*{content}" id="content" name="content"></textarea><br>
+        <input type="submit" value="post">
+    </form>
+    <div>
+        <p th:text="${current_user_name}"></p>
+    </div>
+
+    <div th:each="post : ${posts}" class="box">
+        <h3 th:text="${post.user.firstName}"></h3>
+        <p th:text="${post.content}"></p>
+        <p th:text="${post.date}"></p>
+    </div>
+
+
+</body>
+</html>
